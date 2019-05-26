@@ -154,6 +154,7 @@ public class ClientWindow extends JFrame {
         // отправляем сообщение
         outMessage.println(messageStr);
         outMessage.flush();
+        nMessage.setText("");
         nMessage.setText(jtfMessage.getText());
         jtfMessage.setText("");
     }
