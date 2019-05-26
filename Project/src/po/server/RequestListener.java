@@ -47,7 +47,7 @@ public class RequestListener {
             final InputStream inputStream = socket.getInputStream();
             final BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
             final String request = bufferedReader.readLine();
-            LOGGER.log(Level.INFO, "read: {0}", request);
+            LOGGER.log(Level.INFO, "read: " + request);
             if (dispatcher.isExit(request)) {
                 return false;
             }
