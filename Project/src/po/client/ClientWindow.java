@@ -22,6 +22,7 @@ public class ClientWindow extends JFrame {
     private JTextField jtfMessage;
     private JTextField jtfName;
     private JTextArea jtaTextAreaMessage;
+    private JTextField nMessage = new JTextField("");
     // имя клиента
     private String clientName = "YOU";
     // получаем имя клиента
@@ -76,7 +77,7 @@ public class ClientWindow extends JFrame {
         jtfMessage.addFocusListener(new FocusAdapter() {
             @Override
             public void focusGained(FocusEvent e) {
-                jtfMessage.setText("YOUR MESSAGE...");
+                jtfMessage.setText("");
             }
         });
         // при фокусе поле имя очищается
@@ -102,6 +103,10 @@ public class ClientWindow extends JFrame {
                                 jlNumberOfClients.setText(inMes);
                             } else {
                                 // выводим сообщение
+                                if(nMessage.getText()==inMes)
+                                    jtaTextAreaMessage.append("YOU: ");
+                                else
+                                    jtaTextAreaMessage.append("OPPONENT: ");
                                 jtaTextAreaMessage.append(inMes);
                                 // добавляем строку перехода
                                 jtaTextAreaMessage.append("\n");
@@ -145,10 +150,11 @@ public class ClientWindow extends JFrame {
         //jtfName.setText("Opponent");
 
        // String messageStr = jtfName.getText() + ": " + jtfMessage.getText();
-        String messageStr = ": " + jtfMessage.getText();
+        String messageStr = jtfMessage.getText();
         // отправляем сообщение
         outMessage.println(messageStr);
         outMessage.flush();
+        nMessage.setText(jtfMessage.getText());
         jtfMessage.setText("");
     }
 }
