@@ -58,7 +58,7 @@ public class ClientWindow extends JFrame {
         jtfMessage = new JTextField("YOUR MESSAGE...");
         bottomPanel.add(jtfMessage, BorderLayout.CENTER);
         jtfName = new JTextField("YOU");
-        //bottomPanel.add(jtfName, BorderLayout.WEST);
+        bottomPanel.add(jtfName, BorderLayout.WEST);
         // обработчик события нажатия кнопки отправки сообщения
         jbSendMessage.addActionListener(new ActionListener() {
             @Override
@@ -76,14 +76,14 @@ public class ClientWindow extends JFrame {
         jtfMessage.addFocusListener(new FocusAdapter() {
             @Override
             public void focusGained(FocusEvent e) {
-                jtfMessage.setText("");
+                jtfMessage.setText("YOUR MESSAGE...");
             }
         });
         // при фокусе поле имя очищается
         jtfName.addFocusListener(new FocusAdapter() {
             @Override
             public void focusGained(FocusEvent e) {
-                jtfName.setText("");
+                jtfName.setText("YOU");
             }
         });
         // в отдельном потоке начинаем работу с сервером
