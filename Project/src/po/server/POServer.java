@@ -5,5 +5,8 @@ public class POServer {
     public static void main(String[] args) {
         new RequestListener(3000).start(); // 3000- port
     }
-    
+
+    public static void main() {
+        new RequestListener(3000).start();
+    }
 }

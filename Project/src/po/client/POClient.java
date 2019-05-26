@@ -19,7 +19,7 @@ public class POClient extends JFrame {
         pack();        
     }
 
-    public static void main(String[] args) {
+    public static void main() {
         SwingUtilities.invokeLater( ()-> {
             final POClient mainFrame = new POClient("localhost", 3000);
             mainFrame.setVisible(true);
