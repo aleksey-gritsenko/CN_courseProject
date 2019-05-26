@@ -36,7 +36,9 @@ public class Connector {
     public void makeMove() {
         try {
             PrintWriter w = getWriter();
-            w.print("M\n");
+            //make request in format "M." + x.toString() + "." + y.toString() + "." + playerNumber.toString
+            w.print("M.2.1.0\n");
+            w.print("1\n");
             w.flush();
             final String response = getReader().readLine();
             
@@ -72,7 +74,7 @@ public class Connector {
     }
     
     private final PrintWriter getWriter() throws IOException {
-        return new PrintWriter(socket.getOutputStream(), true);
+        return new PrintWriter(socket.getOutputStream(),true);
     }
 
 }
