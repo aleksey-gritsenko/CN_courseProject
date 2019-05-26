@@ -23,7 +23,7 @@ public class ClientWindow extends JFrame {
     private JTextField jtfName;
     private JTextArea jtaTextAreaMessage;
     // имя клиента
-    private String clientName = "";
+    private String clientName = "YOU";
     // получаем имя клиента
     public String getClientName() {
         return this.clientName;
@@ -55,17 +55,17 @@ public class ClientWindow extends JFrame {
         add(bottomPanel, BorderLayout.SOUTH);
         JButton jbSendMessage = new JButton("Отправить");
         bottomPanel.add(jbSendMessage, BorderLayout.EAST);
-        jtfMessage = new JTextField("Введите ваше сообщение: ");
+        jtfMessage = new JTextField("YOUR MESSAGE...");
         bottomPanel.add(jtfMessage, BorderLayout.CENTER);
-        jtfName = new JTextField("Введите ваше имя: ");
-        bottomPanel.add(jtfName, BorderLayout.WEST);
+        jtfName = new JTextField("YOU");
+        //bottomPanel.add(jtfName, BorderLayout.WEST);
         // обработчик события нажатия кнопки отправки сообщения
         jbSendMessage.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 // если имя клиента, и сообщение непустые, то отправляем сообщение
                 if (!jtfMessage.getText().trim().isEmpty() && !jtfName.getText().trim().isEmpty()) {
-                    clientName = jtfName.getText();
+                    //clientName = jtfName.getText();
                     sendMsg();
                     // фокус на текстовое поле с сообщением
                     jtfMessage.grabFocus();
@@ -119,8 +119,8 @@ public class ClientWindow extends JFrame {
                 super.windowClosing(e);
                 try {
                     // здесь проверяем, что имя клиента непустое и не равно значению по умолчанию
-                    if (!clientName.isEmpty() && clientName != "Введите ваше имя: ") {
-                        outMessage.println(clientName + " вышел из чата!");
+                    if (!clientName.isEmpty() && clientName == "YOU") {
+                        outMessage.println(" вышел из чата!");
                     } else {
                         outMessage.println("Участник вышел из чата, так и не представившись!");
                     }
@@ -142,7 +142,10 @@ public class ClientWindow extends JFrame {
     // отправка сообщения
     public void sendMsg() {
         // формируем сообщение для отправки на сервер
-        String messageStr = jtfName.getText() + ": " + jtfMessage.getText();
+        //jtfName.setText("Opponent");
+
+       // String messageStr = jtfName.getText() + ": " + jtfMessage.getText();
+        String messageStr = ": " + jtfMessage.getText();
         // отправляем сообщение
         outMessage.println(messageStr);
         outMessage.flush();
