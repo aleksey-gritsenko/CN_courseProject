@@ -44,7 +44,7 @@ public class Connector {
             
             LOGGER.log(Level.INFO, "RESPONSE = {0}", response);
             
-            field.setText(response);
+
         } catch (IOException ex) {
             showError(ex);
         }
