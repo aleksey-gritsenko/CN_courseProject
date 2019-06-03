@@ -33,21 +33,22 @@ public class Connector {
         }
     }
 
-    public void makeMove() {
+    public String makeMove(int x, int y, int player) {
         try {
             PrintWriter w = getWriter();
+            String request = "M." + String.valueOf(x) + "." + String.valueOf(y) + "." + String.valueOf(player) + "\n";
             //make request in format "M." + x.toString() + "." + y.toString() + "." + playerNumber.toString
-            w.print("M.2.1.0\n");
-            w.print("1\n");
+            w.print(request);
             w.flush();
             final String response = getReader().readLine();
-            
+            String resp = response.toString();
             LOGGER.log(Level.INFO, "RESPONSE = {0}", response);
-            
+            return  resp;
 
         } catch (IOException ex) {
             showError(ex);
         }
+        return null;
 
     }
 

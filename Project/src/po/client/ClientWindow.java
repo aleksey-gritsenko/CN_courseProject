@@ -22,7 +22,7 @@ public class ClientWindow extends JFrame {
     private JTextField jtfMessage;
     private JTextField jtfName;
     private JTextArea jtaTextAreaMessage;
-    private JTextField nMessage = new JTextField("");
+    private String nMessage = new String("");
     // имя клиента
     private String clientName = "YOU";
     // получаем имя клиента
@@ -99,14 +99,20 @@ public class ClientWindow extends JFrame {
                             // считываем его
                             String inMes = inMessage.nextLine();
                             String clientsInChat = "Клиентов в чате = ";
+                       //     System.out.println(nMessage);
+
+                         //   System.out.println(inMes);
+
                             if (inMes.indexOf(clientsInChat) == 0) {
                                 jlNumberOfClients.setText(inMes);
                             } else {
+                                if (inMes.equals( "Новый участник вошёл в чат!"))
+                                     jtaTextAreaMessage.append("System: ");
                                 // выводим сообщение
-                                if(nMessage.getText()==inMes)
+                               else{ if(nMessage.equals(inMes))
                                     jtaTextAreaMessage.append("YOU: ");
                                 else
-                                    jtaTextAreaMessage.append("OPPONENT: ");
+                                    jtaTextAreaMessage.append("OPPONENT: ");}
                                 jtaTextAreaMessage.append(inMes);
                                 // добавляем строку перехода
                                 jtaTextAreaMessage.append("\n");
@@ -154,8 +160,9 @@ public class ClientWindow extends JFrame {
         // отправляем сообщение
         outMessage.println(messageStr);
         outMessage.flush();
-        nMessage.setText("");
-        nMessage.setText(jtfMessage.getText());
+        nMessage ="";
+        nMessage = jtfMessage.getText();
+        System.out.println(nMessage);
         jtfMessage.setText("");
     }
 }

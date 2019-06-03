@@ -79,9 +79,11 @@ public class Dispatcher {
             Integer requestPlayer = Integer.parseInt(name.substring(index3+1));
             // generate new field
             System.out.println("Stage 3");
-            if( currentPlayer.compareTo(requestPlayer) == 0){
+            if( /*currentPlayer.compareTo(requestPlayer) == 0 && */x<10 && x>=0 && y<10 && y>=0){
+                if(map[y.intValue()][x.intValue()] == 0){
                 map[y.intValue()][x.intValue()] = 2;
-                currentPlayer = (currentPlayer.intValue() + 1)%2;
+   //             currentPlayer = (currentPlayer.intValue() + 1)%2;
+                }
             }
             System.out.println("Stage 4");
             return mapToString();
